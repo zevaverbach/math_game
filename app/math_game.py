@@ -1,4 +1,6 @@
-# copyright 2020 Simon Averbach and Zev Averbach
+# (c) 2020 Simon Averbach and Zev Averbach
+from time import sleep
+
 from config import MAX_NUM
 
 
@@ -14,10 +16,17 @@ def math_game():
         number = int(input("> "))
     print("How much do you want to add each time?")
     each = int(input("> "))
-    print(f"Okay, here we go! We're going to count from zero to {number} by {each} at a time.")
+
+    print("How many counts do you want to do per second?")
+    num_counts_per_second = int(input("> "))
+
+    print(f"Okay, here we go! We're going to count from zero to {number}, "
+          f"adding {each} {num_counts_per_second} times per second.")
     sleep(3)
-    for i in range(0, number, each):
+    sleep_for_seconds_between_counts = 1 / num_counts_per_second
+    for i in range(1, number + 1, each):
         print(f"{i:,}")
+        sleep(sleep_for_seconds_between_counts)
 
 
 if __name__ == "__main__":
