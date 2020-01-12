@@ -1,4 +1,5 @@
 # (c) 2020 Simon Averbach and Zev Averbach
+import math
 from time import sleep
 
 from config import MAX_NUM, DEFAULT_COUNTING_SPEED, MAX_RUNNING_TIME_SECONDS
@@ -21,6 +22,7 @@ def get_last_number():
         last_number = int(input("> "))
     return last_number
 
+
 def get_increment():
     return int(input("How much do you want to add each time?\n> "))
 
@@ -30,7 +32,7 @@ def predict_running_time(last_number, increment, num_counts_per_second):
 
 
 def calculate_suggested_num_counts_per_second(last_number, increment):
-    return int((last_number / increment) / MAX_RUNNING_TIME_SECONDS)
+    return math.ceil((last_number / increment) / MAX_RUNNING_TIME_SECONDS)
 
 
 def get_input(message, default_val):
