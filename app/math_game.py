@@ -1,7 +1,7 @@
 # (c) 2020 Simon Averbach and Zev Averbach
 from time import sleep
 
-from config import MAX_NUM
+from config import MAX_NUM, DEFAULT_COUNTING_SPEED
 
 
 def math_game():
@@ -17,8 +17,12 @@ def math_game():
     print("How much do you want to add each time?")
     each = int(input("> "))
 
-    print("How many counts do you want to do per second?")
-    num_counts_per_second = int(input("> "))
+    print(f"How many counts do you want to do per second? [{DEFAULT_COUNTING_SPEED:,}]")
+    num_counts_per_second_string = input("> ")
+    if num_counts_per_second_string == '':
+        num_counts_per_second = DEFAULT_COUNTING_SPEED
+    else:
+        num_counts_per_second = int(num_counts_per_second_string)
 
     print(f"Okay, here we go! We're going to count from zero to {number}, "
           f"adding {each} {num_counts_per_second} times per second.")
